@@ -3,7 +3,7 @@ module.exports = {
     client: "sqlite3",
     connection: {
       // Name your database and path it correctly
-      filename: "./data/predictor.db3"
+      filename: "./data/users.db3"
     },
     useNullAsDefault: true,
     migrations: {
