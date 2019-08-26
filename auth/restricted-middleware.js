@@ -8,13 +8,13 @@ module.exports = (req, res, next) => {
   if (token) {
     jwt.verify(token, secret.jwtSecret, (err, decodedToken) => {
       if (err) {
-        res.status(401).json({ you: "shall not pass" });
+        res.status(401).json({ message: "You shall not pass" });
       } else {
         req.user = { username: decodedToken.username };
         next();
       }
     });
   } else {
-    res.status(400).json({ message: "user be logged in to do that!" });
+    res.status(400).json({ message: "User must be logged in to do that!" });
   }
 };
