@@ -1,3 +1,12 @@
+const localPg = {
+  host: "localhost",
+  database: "users",
+  user: "mike.vansleen",
+  password: "password"
+};
+
+const productionDbConnection = process.env.DATABASE_URL || localPg;
+
 module.exports = {
   development: {
     client: "sqlite3",
@@ -27,6 +36,16 @@ module.exports = {
       filename: "./data/test.db3"
     },
     useNullAsDefault: true,
+    migrations: {
+      directory: "./data/migrations"
+    },
+    seeds: {
+      directory: "./data/seeds"
+    }
+  },
+  production: {
+    client: "pg",
+    connection: productionDbConnection,
     migrations: {
       directory: "./data/migrations"
     },
