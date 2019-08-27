@@ -18,7 +18,8 @@ function findBy(filter) {
 }
 
 function add(user) {
-  return db("users")
+  db("users")
+    .returning("id")
     .insert(user)
     .then(ids => {
       const [id] = ids;
