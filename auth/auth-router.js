@@ -16,9 +16,7 @@ router.post("/register", (req, res) => {
       res.status(201).json(saved);
     })
     .catch(error => {
-      res
-        .status(500)
-        .json({ message: "There was an error adding the user to the DB." });
+      res.status(500).json({ message: error });
     });
 });
 
