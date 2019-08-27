@@ -6,6 +6,7 @@ const cors = require("cors");
 // import routers
 const UsersRouter = require("./users/users-router.js");
 const AuthRouter = require("./auth/auth-router.js");
+const PlayersRouter = require("./players/players-router.js");
 
 // create server using express
 const server = express();
@@ -18,6 +19,7 @@ server.use(cors());
 // setup paths for routers
 server.use("/api/users", UsersRouter);
 server.use("/api/auth", AuthRouter);
+server.use("/api/players", PlayersRouter);
 
 // GET request to root / to make sure everything is working
 server.get("/", (req, res) => {
