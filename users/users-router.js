@@ -10,7 +10,6 @@ router.get("/", (req, res) => {
       res.json(users);
     })
     .catch(err => {
-      console.error(err);
       return res
         .status(500)
         .json({ message: "Could not get all users from the DB" });
@@ -33,11 +32,21 @@ router.put("/:id", (req, res) => {
 // Delete a user by passing user's ID as a req param
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
-  Users.remove(id)
-    .then(users => {
-      res.json(users);
+  let foundUser;
+  Users.find()
+    .then(user => {
+      foundUser = user;
+      Users.remove(id)
+        .then(users => {
+          res.json(foundUser[0]);
+        })
+        .catch(err => res.send(err));
     })
-    .catch(err => res.send(err));
+    .catch(err => {
+      return res
+        .status(500)
+        .json({ message: "Could not get all users from the DB" });
+    });
 });
 
 // Export router
