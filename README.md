@@ -28,7 +28,7 @@ expects username(unique, required), email(unique, required) and password(require
 > **DELETE** https://career-longevity-predictor.herokuapp.com/api/users/:id
 
 ---
-#### PLAYERS ENDPOINTS
+### PLAYERS ENDPOINTS
 
 #### Get list of all players
 > **GET**  https://career-longevity-predictor.herokuapp.com/api/players
