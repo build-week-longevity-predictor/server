@@ -7,7 +7,7 @@
 #### Login 
 > **POST**  https://career-longevity-predictor.herokuapp.com/api/auth/login<br/>
 
-Must include username and password in request body<br/><br/>
+Must include username and password in request body. Returns a json web token<br/><br/>
 Example body:<br/> 
 {<br/>
 "username": "testUser",<br/> 
