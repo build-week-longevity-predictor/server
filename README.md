@@ -8,23 +8,27 @@
 > **POST**  https://career-longevity-predictor.herokuapp.com/api/auth/login<br/>
 
 Must include username and password in request body. Returns a json web token<br/><br/>
-Example body:<br/> 
-{<br/>
-"username": "testUser",<br/> 
-"password": "testPassword"<br/> 
-}<br/>
+Example request body:<br/> 
+```
+{
+"username": "testUser",
+"password": "testPassword"
+}
+```
 
 ---
 #### Register 
 > **POST**  https://career-longevity-predictor.herokuapp.com/api/auth/register
 
 Must include unique username, unique email address and a password in request body<br/><br/>
-Example: <br/>
-{<br/> 
-"username": "testUser",<br/> 
-"email": "test@email.com",<br/> 
-"password": "testPassword"<br/> 
-}<br/>
+Example request body: <br/>
+```
+{
+"username": "testUser",
+"email": "test@email.com",
+"password": "testPassword"
+}
+```
 
 
 ---
@@ -38,12 +42,14 @@ Example: <br/>
 > **PUT** https://career-longevity-predictor.herokuapp.com/api/users/:id
 
 Must include desired changes in request body<br/><br/>
-Example:<br/>
-{<br/> 
-"username": "changedUsername",<br/> 
-"email": "changed@email.com",<br/> 
-"password": "changedPassword"<br/> 
-}<br/>
+Example request body:<br/>
+```
+{
+"username": "changedUsername",
+"email": "changed@email.com",
+"password": "changedPassword"
+}
+```
 
 
 ---
