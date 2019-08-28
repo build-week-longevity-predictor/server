@@ -2,6 +2,7 @@
 const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
+const morgan = require("morgan");
 
 // import routers
 const UsersRouter = require("./users/users-router.js");
@@ -15,6 +16,7 @@ const server = express();
 server.use(helmet());
 server.use(express.json());
 server.use(cors());
+server.use(morgan("dev"));
 
 // setup paths for routers
 server.use("/api/users", UsersRouter);

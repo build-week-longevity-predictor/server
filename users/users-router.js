@@ -9,9 +9,12 @@ router.get("/", (req, res) => {
     .then(users => {
       res.json(users);
     })
-    .catch(err =>
-      res.status(500).json({ message: "Could not get all users from the DB" })
-    );
+    .catch(err => {
+      console.error(err);
+      return res
+        .status(500)
+        .json({ message: "Could not get all users from the DB" });
+    });
 });
 
 //Updates a user by passing user's ID as a request parameter and changes in request body
