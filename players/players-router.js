@@ -32,5 +32,21 @@ router.get("/:id", (req, res) => {
     );
 });
 
+//Get a single player by username
+router.get("/search/:name", (req, res) => {
+  const { name } = req.params;
+  const searchTerm = name.replace("_", " ");
+
+  Players.findBy({ player: searchTerm })
+    .then(player => {
+      res.status(200).json(player);
+    })
+    .catch(error => {
+      res
+        .status(500)
+        .json({ message: "There was an error finding that player" });
+    });
+});
+
 // Export router
 module.exports = router;

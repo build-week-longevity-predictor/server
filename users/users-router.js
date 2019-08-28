@@ -7,7 +7,7 @@ const Users = require("./users-model");
 router.get("/", (req, res) => {
   Users.find()
     .then(users => {
-      res.json(users);
+      res.status(200).json(users);
     })
     .catch(err => {
       return res
@@ -22,7 +22,7 @@ router.get("/:id", (req, res) => {
   Users.findById(id)
     .then(user => {
       if (user) {
-        res.json(user);
+        res.status(200).json(user);
       } else {
         res
           .status(404)
@@ -32,6 +32,22 @@ router.get("/:id", (req, res) => {
     .catch(err =>
       res.status(500).json({ message: "Could not get user from the DB" })
     );
+});
+
+//Get a single user by username
+router.get("/search/:name", (req, res) => {
+  const { name } = req.params;
+  const searchTerm = name.replace("_", " ");
+
+  Users.findBy({ username: searchTerm })
+    .then(user => {
+      res.status(200).json(user);
+    })
+    .catch(error => {
+      res
+        .status(500)
+        .json({ message: "There was an error finding that username" });
+    });
 });
 
 //Updates a user by passing user's ID as a request parameter and changes in request body
@@ -63,7 +79,7 @@ router.delete("/:id", (req, res) => {
         foundUser = user;
         Users.remove(id)
           .then(users => {
-            res.json(foundUser);
+            res.status(200).json(foundUser);
           })
           .catch(err => res.send(err));
       } else {
