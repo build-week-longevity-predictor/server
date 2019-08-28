@@ -26,7 +26,7 @@ router.put("/:id", (req, res) => {
         res.status(200).json(user);
       } else {
         res
-          .status(500)
+          .status(404)
           .json({ message: "Could not find a user with that ID in the db" });
       }
     })
@@ -50,7 +50,7 @@ router.delete("/:id", (req, res) => {
           .catch(err => res.send(err));
       } else {
         res
-          .status(500)
+          .status(404)
           .json({ message: "Could not find a user with that ID in the db" });
       }
     })
