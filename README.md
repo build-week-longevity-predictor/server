@@ -5,12 +5,23 @@
 ### AUTH ENDPOINTS
 
 #### Login 
-expects username and password:
+Must include username and password in request body<br/><br/>
+Example body:<br/> 
+{<br/>
+"username": "testUser",<br/> 
+"password": "testPassword"<br/> 
+}<br/>
 > **POST**  https://career-longevity-predictor.herokuapp.com/api/auth/login
 
 ---
 #### Register 
-expects username(unique, required), email(unique, required) and password(required):
+Must include unique username, unique email address and a password in request body<br/><br/>
+Example: <br/>
+{<br/> 
+"username": "testUser",<br/> 
+"email": "test@email.com",<br/> 
+"password": "testPassword"<br/> 
+}<br/>
 > **POST**  https://career-longevity-predictor.herokuapp.com/api/auth/register
 
 ---
@@ -21,6 +32,13 @@ expects username(unique, required), email(unique, required) and password(require
 
 ---
 #### Edit a user
+Must include desired changes in request body<br/><br/>
+Example:<br/>
+{<br/> 
+"username": "changedUsername",<br/> 
+"email": "changed@email.com",<br/> 
+"password": "changedPassword"<br/> 
+}<br/>
 > **PUT** https://career-longevity-predictor.herokuapp.com/api/users/:id
 
 ---
