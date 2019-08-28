@@ -29,7 +29,7 @@ function add(user) {
 
 function findById(id) {
   return db("players_nba")
-    .where({ id })
+    .where({ unnamed_0: id })
     .first();
 }
 
