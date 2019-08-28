@@ -16,6 +16,24 @@ router.get("/", (req, res) => {
     });
 });
 
+// Get single user by ID
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+  Users.findById(id)
+    .then(user => {
+      if (user) {
+        res.json(user);
+      } else {
+        res
+          .status(404)
+          .json({ message: "Could not find a user with that ID in the db" });
+      }
+    })
+    .catch(err =>
+      res.status(500).json({ message: "Could not get user from the DB" })
+    );
+});
+
 //Updates a user by passing user's ID as a request parameter and changes in request body
 router.put("/:id", (req, res) => {
   const changes = req.body;

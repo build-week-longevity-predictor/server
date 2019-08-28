@@ -29,6 +29,7 @@ function add(user) {
 
 function findById(id) {
   return db("users")
+    .select("users.id", "users.username", "users.email")
     .where({ id })
     .first();
 }
