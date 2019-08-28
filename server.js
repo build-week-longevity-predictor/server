@@ -3,6 +3,7 @@ const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
 const morgan = require("morgan");
+const restricted = require("./auth/restricted-middleware");
 
 // import routers
 const UsersRouter = require("./users/users-router.js");
@@ -19,7 +20,7 @@ server.use(cors());
 server.use(morgan("dev"));
 
 // setup paths for routers
-server.use("/api/users", UsersRouter);
+server.use("/api/users", restricted, UsersRouter);
 server.use("/api/auth", AuthRouter);
 server.use("/api/players", PlayersRouter);
 
